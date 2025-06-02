@@ -5,10 +5,15 @@
 - Laravel 11.x **
 - Composer
 
+## Nota:
+Los archivos se encuentran en la rama DEV , favor revisar la rama DEV. Gracias <3 
+
 ## Installation
 1. Clonar el repositorio:
    git clone https://github.com/snowflakeCs/benefits.git
    cd benefits
+   git checkout dev
+   git pull ( de ser necesario)
 
 2. Instalar dependencias:
    composer install
