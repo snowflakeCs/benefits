@@ -1,0 +1,176 @@
+{
+	"info": {
+		"_postman_id": "a5f9e8d7-c6b5-4a43-9e21-b0d9c8a7f654",
+		"name": "Beneficios API",
+		"description": "coleccion de postman para el API de Beneficios",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Obtener beneficios ordenados por año (formateado)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/benefits",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"benefits"
+					]
+				},
+				"description": "endpoint que devuelve beneficios agrupados por año con conteos e información de fichas."
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener beneficios ordenados por año",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/benefits/by-year",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"benefits",
+						"by-year"
+					]
+				},
+				"description": "endpoint que devuelve beneficios agrupados por año"
+			},
+			"response": []
+		},
+		{
+			"name": "monto total por año",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/benefits/total-amount-per-year",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"benefits",
+						"total-amount-per-year"
+					]
+				},
+				"description": "calcula el monto total de beneficios para cada año"
+			},
+			"response": []
+		},
+		{
+			"name": "conteo por año , beneficios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/benefits/count-per-year",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"benefits",
+						"count-per-year"
+					]
+				},
+				"description": " cuenta el número de beneficios para cada año"
+			},
+			"response": []
+		},
+		{
+			"name": "Filtrar beneficios por rango de monto",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/benefits/filter-by-amount-range",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"benefits",
+						"filter-by-amount-range"
+					]
+				},
+				"description": "Filtra los beneficios según los rangos de monto mínimo y máximo definidos",
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener beneficios con sus fichas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/benefits/with-cards",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"benefits",
+						"with-cards"
+					]
+				},
+				"description": "Recupera todos los beneficios con su información de ficha correspondiente."
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener beneficios ordenados por año (ascendente)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/benefits/by-year-asc-to-desc",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"benefits",
+						"by-year-asc-to-desc"
+					]
+				},
+				"description": "Recupera todos los beneficios agrupados por año en orden ascendente."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000",
+			"type": "string"
+		}
+	]
+}

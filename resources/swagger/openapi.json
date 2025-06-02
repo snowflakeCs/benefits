@@ -1,0 +1,465 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Beneficios API",
+      "description": "API para gestionar y recuperar datos de beneficios",
+      "version": "1.0.0"
+    },
+    "servers": [
+      {
+        "url": "/api",
+        "description": "API Server"
+      }
+    ],
+    "paths": {
+      "/benefits/by-year": {
+        "get": {
+          "summary": "Obtener beneficios ordenados por año",
+          "description": "Obtiene todos los beneficios agrupados por año en orden descendente",
+          "tags": [
+            "Benefits"
+          ],
+          "responses": {
+            "200": {
+              "description": "Operación exitosa",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "success": {
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "data": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Benefit"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/benefits/total-amount-per-year": {
+        "get": {
+          "summary": "Obtener monto total por año",
+          "description": "Calcula el monto total de beneficios para cada año",
+          "tags": [
+            "Benefits"
+          ],
+          "responses": {
+            "200": {
+              "description": "Operación exitosa",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "success": {
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "data": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "number",
+                          "example": 123456
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/benefits/count-per-year": {
+        "get": {
+          "summary": "Obtener conteo de beneficios por año",
+          "description": "Cuenta el número de beneficios para cada año",
+          "tags": [
+            "Benefits"
+          ],
+          "responses": {
+            "200": {
+              "description": "Operación exitosa",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "success": {
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "data": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "integer",
+                          "example": 8
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/benefits/filter-by-amount-range": {
+        "get": {
+          "summary": "Filtrar beneficios por rango de monto",
+          "description": "Filtra los beneficios según los rangos de monto mínimo y máximo definidos",
+          "tags": [
+            "Benefits"
+          ],
+          "responses": {
+            "200": {
+              "description": "Operación exitosa",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "success": {
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/Benefit"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/benefits/with-cards": {
+        "get": {
+          "summary": "Obtener beneficios con susfichas",
+          "description": "Recupera todos los beneficios con su información de ficha correspondiente",
+          "tags": [
+            "Benefits"
+          ],
+          "responses": {
+            "200": {
+              "description": "Operación exitosa",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "success": {
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/BenefitWithCard"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/benefits/by-year-asc-to-desc": {
+        "get": {
+          "summary": "Obtener beneficios ordenados por año",
+          "description": "Recupera todos los beneficios agrupados por año en orden ascendente",
+          "tags": [
+            "Benefits"
+          ],
+          "responses": {
+            "200": {
+              "description": "Operación exitosa",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "success": {
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "data": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Benefit"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Error"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/benefits": {
+        "get": {
+          "summary": "Obtener todos los beneficios en otro formato",
+          "description": "Recupera todos los beneficios agrupados por año con información de conteo y ficha",
+          "tags": [
+            "Benefits"
+          ],
+          "responses": {
+            "200": {
+              "description": "Operación exitosa",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "code": {
+                        "type": "integer",
+                        "example": 200
+                      },
+                      "success": {
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/YearGroup"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "code": {
+                        "type": "integer",
+                        "example": 500
+                      },
+                      "success": {
+                        "type": "boolean",
+                        "example": false
+                      },
+                      "message": {
+                        "type": "string",
+                        "example": "Ocurrio un error"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "Benefit": {
+          "type": "object",
+          "properties": {
+            "id_programa": {
+              "type": "integer",
+              "example": 147
+            },
+            "monto": {
+              "type": "number",
+              "example": 40656
+            },
+            "fecha_recepcion": {
+              "type": "string",
+              "example": "09/11/2023"
+            },
+            "fecha": {
+              "type": "string",
+              "example": "2023-11-09"
+            }
+          }
+        },
+        "Card": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "example": 922
+            },
+            "nombre": {
+              "type": "string",
+              "example": "Emprende"
+            },
+            "id_programa": {
+              "type": "integer",
+              "example": 147
+            },
+            "url": {
+              "type": "string",
+              "example": "emprende"
+            },
+            "categoria": {
+              "type": "string",
+              "example": "trabajo"
+            },
+            "descripcion": {
+              "type": "string",
+              "example": "Fondos concursables para nuevos negocios"
+            }
+          }
+        },
+        "BenefitWithCard": {
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/Benefit"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "ficha": {
+                  "$ref": "#/components/schemas/Card"
+                }
+              }
+            }
+          ]
+        },
+        "YearGroup": {
+          "type": "object",
+          "properties": {
+            "year": {
+              "type": "integer",
+              "example": 2023
+            },
+            "num": {
+              "type": "integer",
+              "example": 8
+            },
+            "beneficios": {
+              "type": "array",
+              "items": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Benefit"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "ano": {
+                        "type": "string",
+                        "example": "2023"
+                      },
+                      "view": {
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "ficha": {
+                        "$ref": "#/components/schemas/Card"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "Error": {
+          "type": "object",
+          "properties": {
+            "success": {
+              "type": "boolean",
+              "example": false
+            },
+            "message": {
+              "type": "string",
+              "example": "Ocurrio un error"
+            }
+          }
+        }
+      }
+    }
+  }
