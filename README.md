@@ -55,7 +55,7 @@ Y lIsto.
 El proyecto tiene tests unitarios , para correrlos:
 $php artisan test
 
-To run specific tests:
+Para correr el test especifico: 
 $php artisan test --filter BenefitsTest
 
 ## Creditos
